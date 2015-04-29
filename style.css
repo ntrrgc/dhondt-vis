@@ -1,0 +1,249 @@
+html, text {
+    font-family: Arial;
+}
+
+.axis text, .axis-label {
+    font-size: 13px;
+}
+
+.axis-label {
+    font-style: italic;
+}
+
+.grid-lines line {
+    stroke-width: 1px;
+    stroke: lightgray;
+    shape-rendering: crispEdges;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+rect {
+    shape-rendering: crispEdges;
+}
+
+svg {
+}
+
+.bar-text {
+    text-anchor: start;
+}
+
+.interactive.bar-rect {
+    cursor: pointer;
+}
+
+.axis.axis-bg line {
+    stroke: black;
+    opacity: 0.25;
+}
+
+.axis-bg .domain, .axis-bg text {
+    display: none;
+}
+
+.page {
+    display: flex;
+    display: -webkit-flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-orient: vertical;
+}
+
+h2 {
+    font-weight: normal;
+}
+
+button, .button {
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background: #44A955;
+    color: white;
+    font-size: 18px;
+    border: none;
+}
+
+button:active, .button:active {
+    background: #6ECD7E;
+}
+
+button:hover, .button:hover {
+    background: #5ECF71;
+}
+
+button:focus, .button:focus {
+    background: #4092CD;
+    outline: none;
+}
+
+.article {
+    max-width: 580px;
+    line-height: 23px;
+    margin: 0 auto;
+}
+
+.article p {
+    margin-top: 20px;
+}
+li {
+  margin-top: 6px;
+}
+#explicacion ul {
+  width: 350px;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+  top: -20px;
+}
+
+p.with-icon img {
+  vertical-align: middle;
+}
+
+p.with-icon {
+    text-align: left;
+}
+
+p.with-icon img {
+    margin-right: 6px;
+}
+
+div#explicacion {
+  margin: 0 auto;
+}
+
+.invisible {
+    display: none;
+}
+
+.content {
+    padding-bottom: 0px;
+    text-align: center;
+}
+
+.tip {
+      display: block;
+      box-sizing: border-box;
+    position: fixed;
+    
+      width: 250px;
+    background: #E6F9E7;
+    font-size: 15px;
+    
+      padding: 0px 10px;
+    border-radius: 20px;
+    left: -2000px;
+    top: -2000px;
+    cursor: pointer;
+    border: 1px solid #7DB6A3;
+      z-index: 1;
+}
+
+.tip-arrow {
+    position: absolute;
+    bottom: -13px;
+    display: block;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.relative {
+    position: relative;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.skip-tutorial {
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+.tip p {
+    margin: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #5050D7;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.button:hover {
+    text-decoration: none;
+}
+
+.button.small {
+    border-radius: 5px;
+    padding: 3px 6px;
+    font-size: 14px;
+}
+
+.button-col .button {
+    display: block;
+    margin-top: 6px;
+    width: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+html {
+    color: black;
+    background: white;
+}
+
+.content-row {
+    display: flex;
+    display: -webkit-flex;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.top-bar {
+    display: flex;
+    background: rgb(237, 237, 237);
+    padding: 4px;
+    border-radius: 5px;
+}
+
+#explicacion .content {
+    max-width: 550px;
+}
+
+.tip-arrow-top {
+    bottom: auto;
+    top: -13px;
+}
+
+.button-col {
+    margin-bottom: 10px;
+}
+
+#demo .content {
+    /* padding-top: 140px; */
+}
+
+.button.disabled {
+    background: #B0B0B0;
+    cursor: default;
+}

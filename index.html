@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El método D'Hondt: Cómo los votos se convierten en escaños</title>
+  <meta name="author" content="Juan Luis Boya">
+  <meta name="description" content="Una explicación intuitiva del método D'Hondt basada en visualización de información">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="d3.min.js"></script>
+  <script src="lodash.min.js"></script>
+  <script src="jquery.js"></script>
+  <script src="velocity.min.js"></script>
+  <script src="src/app2.js"></script>
+  <!--<script src="prefixfree.min.js"></script>-->
+  <script src="http://localhost:35729/livereload.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="titulo" class="page">
+  <div class="content-row"><div class="content">
+    <h1>El método D'Hondt</h1>
+    <h2>Cómo los votos se transforman en escaños</h2>
+    
+    <button class="next">Comenzar</button>
+  </div></div>
+</div>
+
+<div id="introduccion" class="page">
+  <div class="top-bar">
+    <a class="button prev" href="#">Ir atrás</a>
+  </div>
+
+  <div class="content-row"><div class="content">
+    <h1>Sistema proporcional</h1>
+    
+    <div class="article">
+      <p>En un gobierno democrático, el número de escaños de un partido se debe repartir de forma proporcional a los votos que obtiene en las elecciones.</p>
+      
+      <p>La proporcionalidad exacta no es posible porque el número de escaños es limitado y no se pueden subdividir.</p>
+    </div>
+    
+    <button class="next">Continuar</button>
+  </div></div>
+</div>
+
+<div id="ejemplo" class="page">
+  <div class="top-bar">
+    <a class="button prev" href="#">Ir atrás</a>
+  </div>
+
+  <div class="content-row"><div class="content">
+    <aside>
+      <svg class="chart-votes-fixed"></svg>
+    </aside>
+    <div class="article">
+      <p>Estos son los resultados de unas elecciones ficticias realizadas en una determinada circumscripción (región o provincia).</p>
+    
+      <p>A esta circumscripción le corresponden 7 diputados.</p>
+    
+      <p><strong>¿Cómo puedes repartir los 7 escaños entre los diferentes partidos?</strong></p>
+    </div>
+    
+    <button class="next">Continuar</button>
+  </div></div>
+</div>
+
+<div id="explicacion" class="page">
+  <div class="top-bar">
+    <a class="button prev" href="#">Ir atrás</a>
+  </div>
+
+  <div class="content-row"><div class="content">
+    <p class="with-icon">
+    <img src="pholder.svg" alt="">
+    Se asigna un <em>precio</em> en votos a cada escaño.</p>
+    
+    <p class="with-icon">
+    <img src="pholder.svg" alt="">
+    Los partidos compran tantos escaños como pueden.</p>
+    
+    <p class="with-icon">
+    <img src="pholder.svg" alt="">
+    Para un reparto justo se debe encontrar un precio en votos tal que:
+    </p>
+    <ul>
+      <li>se venda el número de escaños exacto</li>
+      <li>ningún partido que pueda comprar un escaño se queda sin poder hacerlo</li>
+    </ul>
+    
+    <button class="next">Continuar</button>
+  </div></div>
+</div>
+
+<div id="demo" class="page">
+  <div class="top-bar">
+    <a class="button prev" href="#">Ir atrás</a>
+    <div class="spacer"></div>
+    <div class="relative">
+      <a class='toggle-x-mode button' href="#">Cambiar vista</a>
+      <div class="tip tip-seats-view" data-anchor="top">
+        <p>Puedes cambiar la escala para ver en el eje horizontal el número de escaños en vez del precio del escaño.</p>
+        <div class="button-col">
+          <a href="#" class="next-tip button small">Continuar</a>
+        </div>
+
+        <object class="tip-arrow tip-arrow-top" data="./tip-arrow-above.svg" type="image/svg+xml"></object>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <a class="button colorblind" href="#">Daltónico</a>
+    <a class="button show-tutorial" href="#">Mostrar explicación</a>
+    <a class="button show-about" href="#">Acerca de</a>
+  </div>
+
+  <div class="content-row"><div class="content">
+    <div>
+      <div class="relative">
+        <svg class="chart-seats"></svg>
+        <div class="tip tip-intro">
+          <p>
+            Esta es una simulación del reparto de escaños por el método D'Hondt.
+          </p>
+      
+          <p>Inicialmente establecemos un precio muy alto, tan alto que sólo vendemos un escaño.</p>
+
+          <div class="button-col">
+            <a href="#" class="next-tip button small">Continuar</a>
+            <a href="#" class="skip-tutorial button small">Saltar explicación</a>
+          </div>
+
+          <object class="tip-arrow" data="./tip-arrow-bottom.svg" type="image/svg+xml"></object>
+        </div>
+        <div class="tip tip-reducing">
+          <p>Vamos reduciendo progresivamente el precio del escaño...</p>
+      
+          <p>Con cualquier precio entre 50.000 y 80.000 votos vendemos dos escaños.</p>
+          <div class="button-col">
+            <a href="#" class="next-tip button small">Continuar</a>
+          </div>
+          <object class="tip-arrow" data="./tip-arrow-bottom.svg" type="image/svg+xml"></object>
+        </div>
+        <div class="tip tip-repeat">
+          <p>Repetimos el proceso hasta vender exactamente los escaños que tenemos, en este caso 7.</p>
+          <div class="button-col">
+            <a href="#" class="next-tip button small">Continuar</a>
+          </div>
+          <object class="tip-arrow" data="./tip-arrow-bottom.svg" type="image/svg+xml"></object>
+        </div>
+      
+        <div class="tip tip-unfair" data-anchor="top">
+          <p>En ocasiones, hay ciertos repartos que no pueden hacerse de manera justa.</p>
+          
+          <p>Por ejemplo: si dos partidos consiguen exactamente los mismos votos no es posible repartir un número impar de escaños.</p>
+      
+          <p>Cuando se dé uno de estos casos aparecerá un salto en el gráfico.</p>
+          <div class="button-col">
+            <a href="#" class="next-tip button small">Continuar</a>
+          </div>
+          <object class="tip-arrow tip-arrow-top" data="./tip-arrow-above.svg" type="image/svg+xml"></object>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="relative">
+        <svg class="chart-seats-proportion"></svg>
+        <div class="tip tip-proportion">
+          <p>Aquí se están los mismos datos que en el gráfico de arriba, pero estirados para ocupar todo el alto.</p>
+          <p>De esta forma se puede ver como la asignación de escaños a partidos varía según vamos añadiendo más escaños.</p>
+          <div class="button-col">
+            <a href="#" class="next-tip button small">Continuar</a>
+          </div>
+          <object class="tip-arrow" data="./tip-arrow-bottom.svg" type="image/svg+xml"></object>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="relative">
+        <svg class="chart-votes"></svg>
+        <div class="tip tip-votes">
+          <p>Puedes modificar el número de votos que recibió cada partido y ver en tiempo real la respuesta del método.</p>
+          <div class="button-col">
+            <a href="#" class="next-tip button small">Finalizar</a>
+          </div>
+          <object class="tip-arrow" data="./tip-arrow-bottom.svg" type="image/svg+xml"></object>
+        </div>
+      </div>
+    </div>
+
+  </div></div>
+</div>
+
+<div id="acerca" class="page">
+  <div class="top-bar">
+    <a class="button return-to-demo" href="#demo">Volver a la demo</a>
+  </div>
+
+  <div class="content-row"><div class="content">
+    <h1>Simulación gráfica del método D'Hondt</h1>
+    
+    <div class="article">
+      <p>Esta aplicación trata de explicar de forma intuitiva el funcionamiento del método D'Hondt haciendo uso de visualización de información.</p>
+
+      <p>La explicación está basada en el paper <a href="http://www.ucl.ac.uk/~ucahhwi/dhondt.pdf"><em>The D'Hondt Method Explained</em></a> de <a href="http://www.ucl.ac.uk/~ucahhwi/"><em>Helen J. Wilson</em></a>.</p>
+      
+      <p>Esta aplicación ha sido desarrollada por <a href="https://github.com/ntrrgc/"><em>Juan Luis Boya</em></a> en la <a href="http://usal.es/webusal/">Universidad de Salamanca</a>.</p>
+
+    </div>
+  </div></div>
+</div>
+
+</body>
+</html>
