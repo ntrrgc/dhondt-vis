@@ -73,8 +73,8 @@ router.goTo = function(newHash) {
   location.hash = newHash;
 }
 router.goBack = function() {
-  router.localTransition = true;
-  window.history.back();
+  var oldViewIndex = router.views.indexOf(router.currentView);
+  router.goTo(router.views[oldViewIndex - 1])
 }
 
 function animateSlide(page, destination, direction) {
