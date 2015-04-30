@@ -37,25 +37,25 @@ El algoritmo parte de un precio máximo y mínimo que corresponden a el máximo 
 
 Una vez implementado y depurado el algoritmo, procedí a comenzar la implementación de la visualización. Tuve que dedicar un par de días a estudiar D3.js, especialmente para entender cómo se asocian los datos a los elementos visuales y cómo se pueden mantener sincronizados. La naturaleza jerárquica de los datos (los escaños totales se dividen en escaños por partido) dificultó más esta tarea.
 
-![Visualización de escaños y precio por escaño (versión final).](grafica1.png)
+![Visualización de escaños y precio por escaño (versión final).](readme_img/grafica1.png)
 
 Para añadir interacción añadí un gráfico de barras que además de mostrar los votos, permite al usuario modificarlos arrastrando las barras en cualquier dirección. Cada vez que se arrastran las barras, se determina un nuevo número de votos, se recalcula la asignación de escaños y se actualiza la visualización.
 
-![Votos recibidos por los partidos.](grafica2.png)
+![Votos recibidos por los partidos.](readme_img/grafica2.png)
 
 Cuando tuve la visualización funcionando me di cuenta de que, aunque parecía útil para explicar el funcionamiento del método, no era tan buena a la hora de mostrar la evolución de la distribución de escaños según se van permitiendo más escaños, ya que la distribución de los rangos de precios no es uniforme.
 
 Para este fin, modifiqué la visualización para que permitiera cambiar la variable del eje X entre precio del escaño o número de escaños. Tuve cuidado de que los elementos del gráfico se mantuvieran constantes de manera que el cambio entre una escala y otra pudiera ser animado.
 
-![Visualización con los escaños en ambos ejes.](grafica3.png)
+![Visualización con los escaños en ambos ejes.](readme_img/grafica3.png)
 
 Consideré útil tener simultáneamente otra visualización alternativa que mostrara la distribución de escaños por partido de forma porcentual. El código sería el mismo que en la visualización anterior cambiando la escala vertical. Para lograr esto reorganicé el código de las visualizaciones en clases (siguiendo el paradigma orientado a objetos).
 
-![Representación porcentual.](grafica4.png)
+![Representación porcentual.](readme_img/grafica4.png)
 
 Teniendo la visualización, hacía falta alguna forma de introducir al usuario en el contexto del problema y explicar qué representaba ésta. Nuevamente boceté diferentes pantallas en las que se explicaría el método.
 
-![Boceto de las explicaciones.](boceto2.jpg)
+![Boceto de las explicaciones.](readme_img/boceto2.jpg)
 
 La implementación final sigue un esquema de presentación de diapositivas, pasando por cada una de las pantallas del boceto hasta llegar a la visualización. Implementé transiciones de desplazamiento entre las páginas.
 
@@ -79,5 +79,5 @@ Después de probar muchas combinaciones, me decanté por la tétrada de rojo, am
 
 Traté de buscar una combinación de colores que cumpliera todos los criterios y además fuera segura para usuarios daltónicos, sin éxito. En lugar de eso, coloqué una escala de color alternativa para usuarios daltónicos, extraída de [ColorBrewer](http://colorbrewer2.org/), en la que hay variaciones de intensidad más fuertes de lo deseado pero puede distinguirse bien con los tipos de daltonismo más frecuentes. Asigné los colores en un orden tal que, aun en el peor caso en el que sólo se distinguieran dos colores, la alternancia de los mismos permitiera distinguir los partidos.
 
-![Visualización de la paleta segura con diferentes tipos de visión. De arriba a abajo: visión tricromática, deuteranopia, protanopia, tritanopia.](daltonismos.png)
+![Visualización de la paleta segura con diferentes tipos de visión. De arriba a abajo: visión tricromática, deuteranopia, protanopia, tritanopia.](readme_img/daltonismos.png)
 
