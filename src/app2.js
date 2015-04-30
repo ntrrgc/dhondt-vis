@@ -1033,7 +1033,7 @@ function showTips() {
         return [c.x(65000), c.y(2)];
       }),
       defineTip('repeat', seatsChart, function(c) {
-        return [c.x(22500), c.y(8)];
+        return [c.x(25800), c.y(7)];
       }),
       defineTip('unfair', seatsChart, function(c) {
         return [c.x(20000), c.y(8)];
