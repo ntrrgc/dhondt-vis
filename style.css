@@ -272,3 +272,36 @@ html {
     left: 5px;
     right: 5px;
 }
+
+.table {
+    display: table;
+    width: 100%;
+}
+
+.row {
+    display: table-row;
+    vertical-align: bottom;
+}
+
+.left {
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.center {
+    display: table-caption;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.right {
+    display: table-cell;
+    text-align: right;
+    vertical-align: bottom;
+    width: 400px;
+}
+
+.center a {
+    white-space: nowrap;
+    display: inline-block;
+}
