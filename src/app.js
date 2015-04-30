@@ -725,15 +725,6 @@ _.assign(SeatsChart.prototype, {
       .attr('data-seats', function(d,i) {
         return d.seats;
       })
-      .each(function(d) {
-        // console.log('entra %d', d.seats);
-      })
-      /*
-      .style('opacity', 0)
-      .transition('fado')
-        .duration(800)
-        .style('opacity', 1)
-       */
 
     // column: ENTER + UPDATE
     // Select boxes (each of the rects showing how many seats got a party
@@ -814,15 +805,6 @@ _.assign(SeatsChart.prototype, {
     // column: EXIT
     this.column.exit()
       .selectAll('rect')
-      /*
-      .each(function(d) {
-        // console.log('sale %d', d.seats);
-      })
-      .transition('fade')
-      .duration(800)
-        .style('opacity', function(d,i) {
-          return 0;
-        }) */
       .remove()
   },
 
