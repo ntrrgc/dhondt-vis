@@ -1075,6 +1075,9 @@ function updateEnabledButtons() {
 }
 
 function restartDemo() {
+  seatsChart.setXMode('price')
+  seatsProportionChart.setXMode('price')
+
   resetToDefaultVotes();
   distribution = calcDistribution(maxSeats)
 
