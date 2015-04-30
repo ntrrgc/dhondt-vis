@@ -107,6 +107,7 @@ li {
   text-align: left;
   position: relative;
   top: -20px;
+  margin-top: 30px;
 }
 
 p.with-icon img {
@@ -304,4 +305,8 @@ html {
 .center a {
     white-space: nowrap;
     display: inline-block;
+}
+
+li {
+    margin-top: 15px;
 }
