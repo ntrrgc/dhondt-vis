@@ -80,21 +80,25 @@ router.goBack = function() {
 function animateSlide(page, destination, direction) {
   var width = page.width();
   var duration = 300;
+  var startX = 5;
+  var startY = 5;
+  console.log(startY);
 
   var css = {
     'position': 'fixed',
     'width': width,
-    'right': 'auto'
+    'right': 'auto',
+    'top': startY
   };
 
   if (destination == 'out') {
     // Initially on screen
-    css['left'] = '0';
+    css['left'] = 0 + startX;
     page.pageShow().css(css);
 
     var destX = (direction == 'right' ? width : -width);
     page.velocity({
-      'left': destX
+      'left': destX + startX
     }, duration, function animationEnd() {
       // Hide and reset CSS
       page
@@ -103,7 +107,8 @@ function animateSlide(page, destination, direction) {
           'position': '',
           'width': '',
           'right': '',
-          'left': ''
+          'left': '',
+          'top': ''
         });
     })
   } else { // destination == 'in'
@@ -112,13 +117,15 @@ function animateSlide(page, destination, direction) {
     page.pageShow().css(css);
 
     page.velocity({
-      'left': 0
+      'left': startX
     }, duration, function animationEnd() {
       // Reset CSS so the content is not fixed size
       page.css({
         'position': '',
         'width': '',
-        'right': ''
+        'right': '',
+        'left': '',
+        'top': ''
       });
     })
   }
