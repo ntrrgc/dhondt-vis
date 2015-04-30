@@ -468,10 +468,10 @@ _.assign(VotesChart.prototype, {
     var barGroup = this.chart.selectAll('g')
       .data(parties)
 
-    barGroup
+    var newBarGroup = barGroup
       .enter().append('g')
 
-    barGroup.append('rect')
+    newBarGroup.append('rect')
       .attr('x', 0)
       .attr('y', function(d) {
         return self.y(d.name);
@@ -558,7 +558,7 @@ _.assign(VotesChart.prototype, {
       }
     }
 
-    barGroup.append('text')
+    newBarGroup.append('text')
       .attr('class', 'bar-text')
       .attr('dy', '.35em')
 
