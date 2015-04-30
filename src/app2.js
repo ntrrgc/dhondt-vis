@@ -901,6 +901,10 @@ function defineTip(name, chart, posFn) {
 var tips;
 var tipIndex = 0;
 
+function nullHandler(e) {
+  e.preventDefault();
+}
+
 function showTip(chart) {
   if (tipIndex >= tips.length) {
     return;
@@ -1136,6 +1140,9 @@ $(function() {
   votesChart = new VotesChart({ interactive: true });
   seatsChart = new SeatsChart();
   seatsProportionChart = new SeatProportionChart();
+
+  // Make a buttons not redirect by default
+  $('.button').bind('click', nullHandler);
 
   router();
 });
