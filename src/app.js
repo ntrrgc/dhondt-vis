@@ -407,7 +407,7 @@ function VotesChart(opts) {
   };
   this.canvasWidth = 460;
   this.canvasHeight = 150;
-  this.maxVotes = 150000;
+  this.maxVotes = 100000;
   this.interactive = opts.interactive;
 
   this.initCanvas()
